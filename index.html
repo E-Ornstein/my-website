@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ezra Ornstein - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --text-primary: #ffffff;
+            --text-secondary: #b3d3df;
+            --accent-blue: #8ba9b5;
+            --accent-gold: #d4a574;
+            --accent-rust: #cc6633;
+            --accent-orange: #e8a870;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-secondary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography System */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-weight: 300;
+            color: var(--text-primary);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1.5rem var(--spacing-lg);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(179, 211, 223, 0.15);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            padding: 1rem var(--spacing-lg);
+            background: rgba(10, 10, 10, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--text-secondary);
+            transition: width 0.3s var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dune-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, var(--text-secondary), transparent),
+                radial-gradient(2px 2px at 60% 70%, var(--accent-gold), transparent),
+                radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+                radial-gradient(1px 1px at 80% 10%, var(--text-secondary), transparent),
+                radial-gradient(2px 2px at 90% 60%, var(--accent-gold), transparent),
+                radial-gradient(1px 1px at 33% 80%, #fff, transparent);
+            background-size: 200% 200%;
+            animation: twinkle 8s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+
+        .celestial-bodies {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-moon {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(0.5px);
+        }
+
+        .moon-large {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, var(--accent-gold), #b8894d 40%, #8b6339 100%);
+            top: 15%;
+            right: 10%;
+            box-shadow: 0 0 80px rgba(212, 165, 116, 0.4);
+        }
+
+        .moon-small {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 35% 35%, var(--text-secondary), var(--accent-blue) 50%, #6d8691 100%);
+            top: 25%;
+            left: 15%;
+            box-shadow: 0 0 50px rgba(179, 211, 223, 0.3);
+        }
+
+        .dune-layer {
+            position: absolute;
+            width: 200%;
+            height: 35%;
+            border-radius: 50%;
+        }
+
+        .layer1 {
+            background: linear-gradient(180deg, #2a1810 0%, #1a0f08 100%);
+            bottom: -5%;
+            left: -20%;
+            opacity: 0.9;
+        }
+
+        .layer2 {
+            background: linear-gradient(180deg, var(--accent-rust) 0%, #a94d28 60%, #7a3520 100%);
+            bottom: 8%;
+            left: -15%;
+            opacity: 0.85;
+        }
+
+        .layer3 {
+            background: linear-gradient(180deg, #d4824a 0%, #b36938 50%, #8b5230 100%);
+            bottom: 20%;
+            left: -5%;
+            opacity: 0.75;
+        }
+
+        .layer4 {
+            background: linear-gradient(180deg, var(--accent-orange) 0%, #d4824a 40%, #b36938 100%);
+            bottom: 32%;
+            left: 5%;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: fadeInUp 1.2s var(--transition-smooth);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            letter-spacing: clamp(8px, 2vw, 20px);
+            color: var(--text-primary);
+            text-shadow: 0 0 40px rgba(179, 211, 223, 0.6), 0 0 80px rgba(179, 211, 223, 0.3);
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.8rem);
+            letter-spacing: clamp(2px, 0.5vw, 5px);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+            letter-spacing: clamp(1px, 0.3vw, 3px);
+            color: var(--accent-gold);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--spacing-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            color: var(--text-primary);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            letter-spacing: clamp(4px, 1vw, 12px);
+            text-transform: uppercase;
+            color: var(--text-primary);
+            font-weight: 300;
+            text-shadow: 0 0 30px rgba(179, 211, 223, 0.3);
+        }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #1a0f08 50%, var(--bg-dark) 100%);
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .project-card {
+            background: rgba(15, 15, 15, 0.6);
+            border-radius: 24px;
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: all 0.4s var(--transition-smooth);
+            border: 1px solid rgba(179, 211, 223, 0.15);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transition: all 0.4s var(--transition-smooth);
+        }
+
+        .project-card.exo::before {
+            background: linear-gradient(90deg, var(--text-secondary) 0%, var(--accent-blue) 100%);
+        }
+
+        .project-card.hockey::before {
+            background: linear-gradient(90deg, var(--accent-gold) 0%, #b8894d 100%);
+        }
+
+        .project-card.pedal::before {
+            background: linear-gradient(90deg, var(--accent-rust) 0%, #a94d28 100%);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border: 1px solid rgba(179, 211, 223, 0.4);
+            background: rgba(20, 20, 20, 0.8);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(179, 211, 223, 0.1);
+        }
+
+        .project-card:hover::before {
+            height: 100%;
+            opacity: 0.08;
+        }
+
+        .project-card h3 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .project-card p {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .project-tag {
+            display: inline-block;
+            margin-top: var(--spacing-sm);
+            padding: 0.5rem 1rem;
+            background: rgba(179, 211, 223, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            border: 1px solid rgba(179, 211, 223, 0.2);
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0a08 100%);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .who-i-am {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--spacing-xl);
+            letter-spacing: clamp(3px, 1vw, 8px);
+            color: var(--text-primary);
+            font-weight: 300;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(179, 211, 223, 0.3);
+        }
+
+        .hobbies-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg) auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .hobbies-celestial {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .celestial {
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.5s var(--transition-smooth);
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            color: rgba(10, 10, 10, 0.9);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .celestial span {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .celestial::before {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.5s var(--transition-smooth);
+            z-index: 1;
+        }
+
+        .celestial::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .celestial:hover::after {
+            opacity: 1;
+            bottom: -50px;
+        }
+
+        .celestial:hover::before {
+            opacity: 0.4;
+            width: 115%;
+            height: 115%;
+        }
+
+        .celestial:hover {
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .sun1 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, var(--accent-gold) 0%, #b8894d 50%, #8b6339 100%);
+            box-shadow: 0 0 60px rgba(212, 165, 116, 0.5);
+        }
+
+        .sun1::before {
+            background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+        }
+
+        .moon1 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 35% 35%, var(--text-secondary) 0%, var(--accent-blue) 50%, #6d8691 100%);
+            box-shadow: 0 0 50px rgba(179, 211, 223, 0.4);
+        }
+
+        .moon1::before {
+            background: radial-gradient(circle, var(--text-secondary) 0%, transparent 70%);
+        }
+
+        .sun2 {
+            width: 165px;
+            height: 165px;
+            background: radial-gradient(circle at 30% 30%, var(--accent-rust) 0%, #a94d28 50%, #7a3520 100%);
+            box-shadow: 0 0 55px rgba(204, 102, 51, 0.5);
+        }
+
+        .sun2::before {
+            background: radial-gradient(circle, var(--accent-rust) 0%, transparent 70%);
+        }
+
+        .moon2 {
+            width: 135px;
+            height: 135px;
+            background: radial-gradient(circle at 35% 35%, var(--accent-orange) 0%, #d4824a 50%, #b36938 100%);
+            box-shadow: 0 0 45px rgba(232, 168, 112, 0.4);
+        }
+
+        .moon2::before {
+            background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
+        }
+
+        /* Blog Overlay */
+        .blog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 5, 0.98);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .blog-content {
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: var(--spacing-lg);
+            background: rgba(15, 10, 8, 0.9);
+            border-radius: 24px;
+            border: 1px solid rgba(179, 211, 223, 0.2);
+            position: relative;
+            animation: slideUp 0.4s var(--transition-smooth);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-blog {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            background: rgba(179, 211, 223, 0.1);
+            border: 1px solid rgba(179, 211, 223, 0.2);
+        }
+
+        .close-blog:hover {
+            color: var(--text-primary);
+            background: rgba(179, 211, 223, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .blog-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+            letter-spacing: 3px;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .blog-content p {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            :root {
+                --spacing-lg: 3rem;
+                --spacing-xl: 4rem;
+            }
+
+            nav {
+                padding: 1.5rem var(--spacing-md);
+            }
+
+            .nav-links {
+                gap: var(--spacing-md);
+            }
+
+            section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing-lg: 2rem;
+                --spacing-xl: 3rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hobbies-celestial {
+                gap: var(--spacing-md);
+            }
+
+            .sun1 { width: 150px; height: 150px; }
+            .moon1 { width: 120px; height: 120px; }
+            .sun2 { width: 135px; height: 135px; }
+            .moon2 { width: 110px; height: 110px; }
+
+            .blog-content {
+                margin: 3rem var(--spacing-sm);
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">EO</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#" onclick="window.open('Resume___Ezra_Ornstein.pdf', '_blank'); return false;">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="dune-bg">
+            <div class="stars"></div>
+            <div class="celestial-bodies">
+                <div class="hero-moon moon-large"></div>
+                <div class="hero-moon moon-small"></div>
+            </div>
+            <div class="dune-layer layer4"></div>
+            <div class="dune-layer layer3"></div>
+            <div class="dune-layer layer2"></div>
+            <div class="dune-layer layer1"></div>
+        </div>
+        <div class="hero-content">
+            <h1>EZRA ORNSTEIN</h1>
+            <p>Mechatronics Engineering</p>
+            <p class="hero-subtitle">University of Waterloo</p>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+            Explore
+        </div>
+    </section>
+
+    <section id="projects" class="loading">
+        <h2 class="section-title">Engineering Projects</h2>
+        <div class="projects-container">
+            <div class="project-card exo" onclick="openBlog('exo')">
+                <h3>Exoskeleton Power Housing Unit</h3>
+                <p>Designed the Power Housing Unit for Waterloo's first exoskeleton in the Applied Collegiate Exoskeleton Competition. Integrated removable battery packs, battery management system, wire routing, circuit board mounts, and cooling fans into a compact layout. Engineered and validated PCBs by designing and simulating circuits in Altium and LTSpice.</p>
+                <span class="project-tag">Click to learn more →</span>
+            </div>
+
+            <div class="project-card hockey" onclick="openBlog('hockey')">
+                <h3>Automated Air Hockey Defense Machine</h3>
+                <p>Built an autonomous air-hockey defense system to return incoming pucks, achieving a 76% successful deflection rate. Adapted design to strict component constraints using VEX IQ parts only. Designed a custom two-axis positioning system using gear-reduced belt drive for lateral motion and motor-driven linear actuator for rapid striking action. Collaborated with software team on C++ control integration for real-time tracking and response.</p>
+                <span class="project-tag">Click to learn more →</span>
+            </div>
+
+            <div class="project-card pedal" onclick="openBlog('pedal')">
+                <h3>Discrete Transistor Fuzz Face Guitar Pedal</h3>
+                <p>Designed and built an analog distortion pedal using discrete NPN BJTs, adjusting resistor values to set transistor bias points and achieve stable amplification and clipping behavior. Iteratively refined circuit behavior through empirical testing and component-level modifications.</p>
+                <span class="project-tag">Click to learn more →</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="loading">
+        <h2 class="section-title">About</h2>
+        <div class="about-container">
+            <h3 class="who-i-am">Who I Am</h3>
+            <p class="hobbies-intro">Beyond engineering, I pursue diverse interests that fuel creativity and problem-solving. Click each sphere to explore.</p>
+            <div class="hobbies-celestial">
+                <div class="celestial sun1" onclick="openBlog('axe')" data-label="Restoration">
+                    <span>Axe<br>Restoration</span>
+                </div>
+                <div class="celestial moon1" onclick="openBlog('guitar')" data-label="Music">
+                    <span>Guitar</span>
+                </div>
+                <div class="celestial sun2" onclick="openBlog('physical')" data-label="Fitness">
+                    <span>Physical<br>Activity</span>
+                </div>
+                <div class="celestial moon2" onclick="openBlog('warhammer')" data-label="Strategy">
+                    <span>Warhammer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="blogOverlay" class="blog-overlay">
+        <div class="blog-content">
+            <span class="close-blog" onclick="closeBlog()">×</span>
+            <div id="blogText"></div>
+        </div>
+    </div>
+
+    <script>
+        const blogContent = {
+            exo: {
+                title: 'Exoskeleton Power Housing Unit',
+                content: `<p>Working on Waterloo's first exoskeleton for the Applied Collegiate Exoskeleton Competition was an incredible challenge in compact system integration.</p>
+                <p>The Power Housing Unit needed to accommodate multiple critical systems: removable battery packs for easy swapping, a sophisticated battery management system, organized wire routing to prevent interference, secure circuit board mounting, and cooling fans to manage heat dissipation—all within a compact, wearable form factor.</p>
+                <p>I engineered and validated the PCBs using Altium for design and LTSpice for circuit simulation, ensuring reliable power delivery under various load conditions. The project pushed my skills in mechanical packaging, thermal management, and electrical systems integration.</p>`
+            },
+            hockey: {
+                title: 'Automated Air Hockey Defense Machine',
+                content: `<p>This project was all about achieving real-time precision with limited resources. Our autonomous air-hockey defense system achieved a 76% successful deflection rate—a result I'm proud of given our constraints.</p>
+                <p>The challenge was adapting our design to work exclusively with VEX IQ parts. I designed a custom two-axis positioning system: a gear-reduced belt drive handled rapid lateral motion along the goal line, while a motor-driven linear actuator provided quick striking action to intercept pucks.</p>
+                <p>Close collaboration with the software team was essential. We integrated C++ control systems for real-time puck tracking and response, iterating on both mechanical response time and software prediction algorithms until we achieved consistent performance.</p>`
+            },
+            pedal: {
+                title: 'Discrete Transistor Fuzz Face Guitar Pedal',
+                content: `<p>As a guitarist, building my own fuzz pedal was a perfect blend of my interests in music and electronics. The Fuzz Face is a classic design that uses discrete NPN BJTs to create its characteristic warm distortion.</p>
+                <p>The key was carefully adjusting resistor values to set proper transistor bias points. Getting stable amplification and the right clipping behavior required understanding how each component affected the signal chain.</p>
+                <p>I took an iterative approach—building, testing, listening, and modifying. Each component-level change taught me more about analog circuit behavior and how theoretical knowledge translates to the sound coming out of an amplifier. The final result has a rich, organic distortion that I use regularly.</p>`
+            },
+            axe: {
+                title: 'Axe Restoration',
+                content: `<p>There's something deeply satisfying about taking a rusted, forgotten axe and bringing it back to life. Axe restoration combines history, craftsmanship, and practical metalworking skills.</p>
+                <p>Each restoration project starts with careful cleaning—removing rust and decades of accumulated grime to reveal the original steel. I use a combination of mechanical and chemical methods depending on the condition of the piece.</p>
+                <p>Reshaping and sharpening the edge requires patience and attention to geometry. The goal is to preserve the original maker's intent while ensuring the tool is functional. Finally, fitting a new handle involves understanding wood grain, weight balance, and traditional joinery techniques. Every restored axe tells a story.</p>`
+            },
+            guitar: {
+                title: 'Guitar',
+                content: `<p>Guitar has been my creative outlet for years. There's something magical about the direct connection between your fingers and the sound—no intermediary, just vibrating strings and resonating wood.</p>
+                <p>I'm drawn to the technical side as much as the musical. Understanding how pickups translate string vibration into electrical signals, how tube amplifiers shape tone, and how different pedals affect the signal chain adds depth to my playing.</p>
+                <p>My collection ranges from vintage instruments to modern designs, and I enjoy both playing and maintaining them. Building the Fuzz Face pedal was a natural extension of this interest—understanding the electronics behind the sounds I create.</p>`
+            },
+            physical: {
+                title: 'Physical Activity',
+                content: `<p>Physical activity is essential to my routine. Whether it's rock climbing, swimming, or hiking, I need the mental clarity and physical challenge that comes from pushing my body.</p>
+                <p>Rock climbing teaches problem-solving under pressure—each route is a puzzle that requires planning, technique, and sometimes creative solutions. It's engineering in physical form.</p>
+                <p>Swimming offers a different kind of challenge: rhythm, breath control, and endurance. Having worked as a lifeguard, I have deep respect for water safety and the technical aspects of efficient swimming.</p>
+                <p>These activities aren't just exercise—they're opportunities to clear my mind, build resilience, and approach problems from different angles.</p>`
+            },
+            warhammer: {
+                title: 'Warhammer',
+                content: `<p>Warhammer 40,000 combines tactical gameplay with detailed miniature painting and intricate lore. It's a hobby that engages multiple skill sets: strategic thinking, artistic expression, and craftsmanship.</p>
+                <p>Building and painting miniatures requires patience and attention to detail. Each model involves careful assembly, preparation, and painting techniques from base coating to edge highlighting and weathering effects.</p>
+                <p>The gameplay itself is deeply strategic—list building, positioning, understanding probability, and adapting to your opponent's moves. It shares similarities with engineering problem-solving: working within constraints to achieve objectives.</p>
+                <p>The universe's rich lore and community aspect make it more than just a game—it's a creative outlet where I can build something tangible while engaging in competitive strategy.</p>`
+            }
+        };
+
+        function openBlog(type) {
+            const overlay = document.getElementById('blogOverlay');
+            const blogText = document.getElementById('blogText');
+            const content = blogContent[type];
+            
+            blogText.innerHTML = `<h2>${content.title}</h2>${content.content}`;
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlog() {
+            const overlay = document.getElementById('blogOverlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-links a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Update active nav on scroll and navbar styling
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            // Add scrolled class
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Update active nav link
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            lastScroll = currentScroll;
+        });
+
+        // Close blog on overlay click or escape key
+        document.getElementById('blogOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBlog();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBlog();
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.loading').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html> // i hate jews
