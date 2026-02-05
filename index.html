@@ -143,12 +143,13 @@
         }
 
         .dune-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #1a0f08 50%, var(--bg-dark) 100%);
+}
 
         .stars {
             position: absolute;
@@ -170,77 +171,13 @@
             50% { opacity: 0.4; }
         }
 
-        .celestial-bodies {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-moon {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(0.5px);
-        }
-
-        .moon-large {
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle at 30% 30%, var(--accent-gold), #b8894d 40%, #8b6339 100%);
-            top: 15%;
-            right: 10%;
-            box-shadow: 0 0 80px rgba(212, 165, 116, 0.4);
-        }
-
-        .moon-small {
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle at 35% 35%, var(--text-secondary), var(--accent-blue) 50%, #6d8691 100%);
-            top: 25%;
-            left: 15%;
-            box-shadow: 0 0 50px rgba(179, 211, 223, 0.3);
-        }
-
-        .dune-layer {
-            position: absolute;
-            width: 200%;
-            height: 35%;
-            border-radius: 50%;
-        }
-
-        .layer1 {
-            background: linear-gradient(180deg, #2a1810 0%, #1a0f08 100%);
-            bottom: -5%;
-            left: -20%;
-            opacity: 0.9;
-        }
-
-        .layer2 {
-            background: linear-gradient(180deg, var(--accent-rust) 0%, #a94d28 60%, #7a3520 100%);
-            bottom: 8%;
-            left: -15%;
-            opacity: 0.85;
-        }
-
-        .layer3 {
-            background: linear-gradient(180deg, #d4824a 0%, #b36938 50%, #8b5230 100%);
-            bottom: 20%;
-            left: -5%;
-            opacity: 0.75;
-        }
-
-        .layer4 {
-            background: linear-gradient(180deg, var(--accent-orange) 0%, #d4824a 40%, #b36938 100%);
-            bottom: 32%;
-            left: 5%;
-            opacity: 0.6;
-        }
-
         .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            animation: fadeInUp 1.2s var(--transition-smooth);
-        }
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: fadeInUp 1.2s var(--transition-smooth);
+    margin-top: 5rem;
+}
 
         @keyframes fadeInUp {
             from {
@@ -258,7 +195,7 @@
             letter-spacing: clamp(8px, 2vw, 20px);
             color: var(--text-primary);
             text-shadow: 0 0 40px rgba(179, 211, 223, 0.6), 0 0 80px rgba(179, 211, 223, 0.3);
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
             font-weight: 300;
         }
 
@@ -268,7 +205,7 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             font-weight: 300;
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
         }
 
         .hero-subtitle {
@@ -279,36 +216,67 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: var(--spacing-lg);
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+        <div class="working-on">
+         <h3>What I'm Currently Working On</h3>
+          <ul>
+             <li>Power electronics for UW Biomechatronics’ exoskeleton team</li>
+             <li>My Mechatronics Engineering Degree</li>
+             <li>My Co-op Search! Contact me at eornstei@uwaterloo.ca</li>
+         </ul>
+        </div>
 
-        .scroll-indicator:hover {
-            color: var(--text-primary);
-        }
+.working-on {
+    margin: var(--spacing-md) auto 0 auto;
+    max-width: 650px;
+    text-align: left;
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid rgba(179, 211, 223, 0.25);
+    border-radius: 16px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
+.working-on h3 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(179, 211, 223, 0.2);
+}
 
-        .scroll-indicator::after {
-            content: '↓';
-            display: block;
-            text-align: center;
-            font-size: 1.5rem;
-            margin-top: 0.5rem;
-        }
+.working-on ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 550px;
+}
+
+.working-on li {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    padding-left: 0;
+    position: relative;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.working-on li::before {
+    content: '→';
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
 
         /* Sections */
         section {
@@ -329,238 +297,287 @@
         }
 
         /* Projects Section */
-        #projects {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, #1a0f08 50%, var(--bg-dark) 100%);
-        }
+/* Projects Section */
+#projects {
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #1a0f08 50%, var(--bg-dark) 100%);
+    padding-top: calc(var(--spacing-xl) + 80px);
+}
 
-        .projects-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
-        }
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .project-card {
-            background: rgba(15, 15, 15, 0.6);
-            border-radius: 24px;
-            padding: var(--spacing-lg);
-            cursor: pointer;
-            transition: all 0.4s var(--transition-smooth);
-            border: 1px solid rgba(179, 211, 223, 0.15);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
+.large-tab-container {
+    margin-bottom: var(--spacing-md);
+}
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            transition: all 0.4s var(--transition-smooth);
-        }
+/* Add extra spacing only between top-level project sections */
+.projects-container > .large-tab-container {
+    margin-bottom: var(--spacing-lg);
+}
 
-        .project-card.exo::before {
-            background: linear-gradient(90deg, var(--text-secondary) 0%, var(--accent-blue) 100%);
-        }
+.large-tab-header {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(179, 211, 223, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-smooth);
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .project-card.hockey::before {
-            background: linear-gradient(90deg, var(--accent-gold) 0%, #b8894d 100%);
-        }
+.large-tab-header:hover {
+    background: rgba(25, 25, 25, 0.9);
+    border-color: rgba(179, 211, 223, 0.4);
+    transform: translateY(-2px);
+}
 
-        .project-card.pedal::before {
-            background: linear-gradient(90deg, var(--accent-rust) 0%, #a94d28 100%);
-        }
+.large-tab-header h3 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    font-family: 'Cormorant Garamond', serif;
+}
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            border: 1px solid rgba(179, 211, 223, 0.4);
-            background: rgba(20, 20, 20, 0.8);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(179, 211, 223, 0.1);
-        }
+.large-tab-header.active {
+    background: rgba(30, 30, 30, 0.9);
+    border-color: var(--accent-gold);
+    margin-bottom: 0;
+    border-radius: 12px 12px 0 0;
+}
 
-        .project-card:hover::before {
-            height: 100%;
-            opacity: 0.08;
-        }
+.tab-icon {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+    user-select: none;
+}
 
-        .project-card h3 {
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            margin-bottom: var(--spacing-sm);
-            color: var(--text-primary);
-            letter-spacing: 2px;
-            font-weight: 400;
-            font-family: 'Cormorant Garamond', serif;
-        }
+.large-tab-header.active .tab-icon {
+    transform: rotate(0deg);
+}
 
-        .project-card p {
-            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-            line-height: 1.8;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
+.large-tab-description {
+    background: rgba(30, 25, 25, 0.95);
+    border-left: 1px solid rgba(179, 211, 223, 0.2);
+    border-right: 1px solid rgba(179, 211, 223, 0.2);
+    padding: 1.5rem;
+    margin: 0;
+}
 
-        .project-tag {
-            display: inline-block;
-            margin-top: var(--spacing-sm);
-            padding: 0.5rem 1rem;
-            background: rgba(179, 211, 223, 0.1);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            border: 1px solid rgba(179, 211, 223, 0.2);
-        }
+.large-tab-description p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin: 0;
+}
 
-        /* About Section */
-        #about {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0a08 100%);
-        }
+.large-tab-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--transition-smooth), padding 0.5s var(--transition-smooth);
+}
 
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.large-tab-content.active {
+    max-height: 5000px;
+    border: 1px solid rgba(179, 211, 223, 0.2);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    background: rgba(30, 25, 25, 0.95);
+    padding-bottom: 1.5rem;
+}
 
-        .who-i-am {
-            text-align: center;
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: var(--spacing-xl);
-            letter-spacing: clamp(3px, 1vw, 8px);
-            color: var(--text-primary);
-            font-weight: 300;
-            text-transform: uppercase;
-            text-shadow: 0 0 30px rgba(179, 211, 223, 0.3);
-        }
+.project-tab {
+    background: rgba(15, 15, 15, 0.6);
+    border: 1px solid rgba(179, 211, 223, 0.15);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-smooth);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
-        .hobbies-intro {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto var(--spacing-lg) auto;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
+.project-tab:hover {
+    background: rgba(20, 20, 20, 0.8);
+    border-color: rgba(179, 211, 223, 0.3);
+    transform: translateY(-2px);
+}
 
-        .hobbies-celestial {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: var(--spacing-lg);
-            flex-wrap: wrap;
-            margin-bottom: var(--spacing-lg);
-        }
+.project-tab h4 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s ease;
+    flex: 1;
+}
 
-        .celestial {
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.5s var(--transition-smooth);
-            text-align: center;
-            font-size: 1rem;
-            letter-spacing: 1.5px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            color: rgba(10, 10, 10, 0.9);
-            font-weight: 500;
-            text-transform: uppercase;
-        }
+.project-tab.active {
+    background: rgba(35, 30, 30, 0.95);
+    border-color: var(--text-secondary);
+    border-radius: 12px 12px 0 0;
+}
 
-        .celestial span {
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
+.project-tab.active h4 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    width: 100%;
+}
 
-        .celestial::before {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: all 0.5s var(--transition-smooth);
-            z-index: 1;
-        }
+.tab-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
-        .celestial::after {
-            content: attr(data-label);
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            opacity: 0;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            pointer-events: none;
-        }
+.tab-content-wrapper {
+    width: 100%;
+    background: rgba(35, 30, 30, 0.95);
+    border: 1px solid rgba(179, 211, 223, 0.2);
+    border-top: 1px solid rgba(179, 211, 223, 0.1);
+    border-radius: 0 0 12px 12px;
+    margin-top: -1px;
+}
 
-        .celestial:hover::after {
-            opacity: 1;
-            bottom: -50px;
-        }
+.tab-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--transition-smooth), opacity 0.3s ease, padding 0.5s var(--transition-smooth);
+    opacity: 0;
+    padding: 0 1.5rem;
+}
 
-        .celestial:hover::before {
-            opacity: 0.4;
-            width: 115%;
-            height: 115%;
-        }
+.tab-content.active {
+    max-height: 5000px;
+    opacity: 1;
+    padding: 1.5rem;
+}
 
-        .celestial:hover {
-            transform: scale(1.1);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
+.tab-content p {
+    color: var(--text-secondary);
+    line-height: 1.9;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
 
-        .sun1 {
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle at 30% 30%, var(--accent-gold) 0%, #b8894d 50%, #8b6339 100%);
-            box-shadow: 0 0 60px rgba(212, 165, 116, 0.5);
-        }
+.tab-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: 1px solid rgba(179, 211, 223, 0.2);
+}
 
-        .sun1::before {
-            background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
-        }
+.tab-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
 
-        .moon1 {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle at 35% 35%, var(--text-secondary) 0%, var(--accent-blue) 50%, #6d8691 100%);
-            box-shadow: 0 0 50px rgba(179, 211, 223, 0.4);
-        }
+.tab-images img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(179, 211, 223, 0.2);
+    transition: transform 0.3s ease;
+}
 
-        .moon1::before {
-            background: radial-gradient(circle, var(--text-secondary) 0%, transparent 70%);
-        }
+.tab-images img:hover {
+    opacity: 0.9;
+}
 
-        .sun2 {
-            width: 165px;
-            height: 165px;
-            background: radial-gradient(circle at 30% 30%, var(--accent-rust) 0%, #a94d28 50%, #7a3520 100%);
-            box-shadow: 0 0 55px rgba(204, 102, 51, 0.5);
-        }
+.tab-content img:hover {
+    opacity: 0.9;
+}
 
-        .sun2::before {
-            background: radial-gradient(circle, var(--accent-rust) 0%, transparent 70%);
-        }
+.large-tab-description img:hover {
+    opacity: 0.9;
+}
 
-        .moon2 {
-            width: 135px;
-            height: 135px;
-            background: radial-gradient(circle at 35% 35%, var(--accent-orange) 0%, #d4824a 50%, #b36938 100%);
-            box-shadow: 0 0 45px rgba(232, 168, 112, 0.4);
-        }
+/* Subtabs within large tabs */
+.large-tab-content .project-tab {
+    background: rgba(25, 20, 20, 0.7);
+    border: 1px solid rgba(179, 211, 223, 0.15);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
 
-        .moon2::before {
-            background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
-        }
+.large-tab-content .project-tab:hover {
+    background: rgba(30, 25, 25, 0.85);
+}
+
+.large-tab-content .project-tab.active {
+    background: rgba(40, 35, 35, 0.95);
+}
+
+.large-tab-content .tab-content-wrapper {
+    background: rgba(40, 35, 35, 0.95);
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Image Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 100vw;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(179, 211, 223, 0.3);
+    animation: zoomIn 0.3s var(--transition-smooth);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tab-content img,
+.tab-images img,
+.large-tab-description img {
+    cursor: pointer;
+}
 
         /* Blog Overlay */
         .blog-overlay {
@@ -713,7 +730,6 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="#" onclick="window.open('Resume___Ezra_Ornstein.pdf', '_blank'); return false;">Resume</a></li>
             </ul>
         </div>
@@ -722,69 +738,175 @@
     <section id="home" class="hero">
         <div class="dune-bg">
             <div class="stars"></div>
-            <div class="celestial-bodies">
-                <div class="hero-moon moon-large"></div>
-                <div class="hero-moon moon-small"></div>
-            </div>
-            <div class="dune-layer layer4"></div>
-            <div class="dune-layer layer3"></div>
-            <div class="dune-layer layer2"></div>
-            <div class="dune-layer layer1"></div>
         </div>
         <div class="hero-content">
             <h1>EZRA ORNSTEIN</h1>
-            <p>Mechatronics Engineering</p>
-            <p class="hero-subtitle">University of Waterloo</p>
-        </div>
-        <div class="scroll-indicator" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
-            Explore
-        </div>
-    </section>
-
-    <section id="projects" class="loading">
-        <h2 class="section-title">Engineering Projects</h2>
-        <div class="projects-container">
-            <div class="project-card exo" onclick="openBlog('exo')">
-                <h3>Exoskeleton Power Housing Unit</h3>
-                <p>Designed the Power Housing Unit for Waterloo's first exoskeleton in the Applied Collegiate Exoskeleton Competition. Integrated removable battery packs, battery management system, wire routing, circuit board mounts, and cooling fans into a compact layout. Engineered and validated PCBs by designing and simulating circuits in Altium and LTSpice.</p>
-                <span class="project-tag">Click to learn more →</span>
-            </div>
-
-            <div class="project-card hockey" onclick="openBlog('hockey')">
-                <h3>Automated Air Hockey Defense Machine</h3>
-                <p>Built an autonomous air-hockey defense system to return incoming pucks, achieving a 76% successful deflection rate. Adapted design to strict component constraints using VEX IQ parts only. Designed a custom two-axis positioning system using gear-reduced belt drive for lateral motion and motor-driven linear actuator for rapid striking action. Collaborated with software team on C++ control integration for real-time tracking and response.</p>
-                <span class="project-tag">Click to learn more →</span>
-            </div>
-
-            <div class="project-card pedal" onclick="openBlog('pedal')">
-                <h3>Discrete Transistor Fuzz Face Guitar Pedal</h3>
-                <p>Designed and built an analog distortion pedal using discrete NPN BJTs, adjusting resistor values to set transistor bias points and achieve stable amplification and clipping behavior. Iteratively refined circuit behavior through empirical testing and component-level modifications.</p>
-                <span class="project-tag">Click to learn more →</span>
-            </div>
+            <p>Studying Mechatronics Engineering</p>
+            <p class="hero-subtitle">At The University of Waterloo</p>
+            <div class="working-on">
+    <h3>What I'm Currently Working On</h3>
+    <ul>
+        <li>Power Electronics for UW Biomechatronics' Exoskeleton Team</li>
+        <li>My Mechatronics Engineering Degree</li>
+        <li>My Co-op Search! Contact me at eornstei@uwaterloo.ca</li>
+    </ul>
+</div>
         </div>
     </section>
 
-    <section id="about" class="loading">
-        <h2 class="section-title">About</h2>
-        <div class="about-container">
-            <h3 class="who-i-am">Who I Am</h3>
-            <p class="hobbies-intro">Beyond engineering, I pursue diverse interests that fuel creativity and problem-solving. Click each sphere to explore.</p>
-            <div class="hobbies-celestial">
-                <div class="celestial sun1" onclick="openBlog('axe')" data-label="Restoration">
-                    <span>Axe<br>Restoration</span>
+<section id="projects" class="loading">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-container">
+        
+      <!-- LARGE TAB: UW BioMechatronics -->
+        <div class="large-tab-container">
+            <div class="large-tab-header active" onclick="toggleLargeTab(this)">
+                <h3>UW BioMechatronics Exoskeleton Team (Exo)</h3>
+                <span class="tab-icon">−</span>
+            </div>
+            <div class="large-tab-content active">
+                <div class="large-tab-description">
+                    <p>UW Biotron's newest team is Exo, a team building a soft lower body exoskeleton, meaning the exoskeleton supports the legs without touching the ground and taking weight itself. The exoskeleton is competing in the Applied Collegiate Exoskeleton (ACE) competition in May. In Exo, I'm on the Electrical, Mechanical, and Operations subteams. In Operations I've made promotional material, merchandise, and kept the minutes and notes of my other subteam meetings, but in electrical and mechanical, I've done a few projects.</p>
                 </div>
-                <div class="celestial moon1" onclick="openBlog('guitar')" data-label="Music">
-                    <span>Guitar</span>
-                </div>
-                <div class="celestial sun2" onclick="openBlog('physical')" data-label="Fitness">
-                    <span>Physical<br>Activity</span>
-                </div>
-                <div class="celestial moon2" onclick="openBlog('warhammer')" data-label="Strategy">
-                    <span>Warhammer</span>
+                
+                <div class="project-tab" onclick="toggleTab(this)">
+    <div class="tab-header-row">
+        <h4>Battery Pack</h4>
+        <span class="tab-icon">+</span>
+    </div>
+    <div class="tab-content-wrapper">
+        <div class="tab-content">
+            <p>My first and still ongoing project is a battery pack, which involves both the Mechanical and Electrical teams. This is a component that sits on the lower back, and it must have enough space for the batteries, battery management system (BMS), circuit boards, and fans. This means the batteries need to be configured so that they can be easily accessed while taking as little space as possible. So, in the final CAD model, the battery block is on rails. Above them is the BMS. There is also plenty of space to add fans or circuits in front of the batteries.</p>
+            
+            <img src="https://i.imgur.com/h2eMtni.png" alt="Battery Pack CAD Design" style="width: 100%; max-width: 500px; margin: 1.5rem auto; display: block;">
+
+            <p>The batteries themselves have recently changed, and the new ones have different dimensions. So, the pack needs to be slightly redesigned, and then it can be manufactured and assembled.</p>
+        </div>
+    </div>
+</div>
+
+               <div class="project-tab" onclick="toggleTab(this)">
+    <div class="tab-header-row">
+        <h4>Power Electronics</h4>
+        <span class="tab-icon">+</span>
+    </div>
+    <div class="tab-content-wrapper">
+        <div class="tab-content">
+            <p>Since the start of the winter semester, I've been working on the power electronics for the exoskeleton, making multiple PCB schematics and layouts that will eventually be coalesced into one power board, that all the sensors, motors, and microcontrollers of the skeleton will be connected to.</p>
+            
+            <p>My first PCB was a 5V to 3V3 LDO. It's a relatively simple circuit, but it's needed to power the IMUs and microcontroller board. I had also never used Altium or LTSpice before, so it was a good opportunity to learn the software I would be using for the rest of the boards. I found the components on Digikey, researched how to connect them together, and then made a schematic. After testing it in LTSpice, I made the layout in Altium.</p>
+            
+            <div class="tab-images">
+                <img src="https://i.imgur.com/wCDy1eh.png" alt="LDO Schematic">
+                <img src="https://i.imgur.com/5m6sieU.png" alt="LDO Layout">
+            </div>
+            
+            <p>Once the LDO was finished and validated, I started working on my current project, which is a 28V to 5V buck converter. This is needed to take the very large voltage from the batteries and make it usable for a raspberry pi. Finding the correct components took much longer for the buck, but since Texas Instruments has sample schematics on most of their datasheets, the schematic was simple to make and test. I'm currently in the process of making and routing the layout.</p>
+            
+            <img src="https://i.imgur.com/NDGdwNm.png" alt="Buck Converter Schematic" style="width: 100%; max-width: 500px; margin: 1.5rem auto; display: block;">
+            
+            <p>Once the power board is done, I'm going to move onto the microcontroller board, and get hands-on experience with the electrical systems that can run software, as well as distribute power.</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+
+        <!-- STANDALONE TAB: Air Hockey -->
+        <div class="large-tab-container">
+            <div class="large-tab-header" onclick="toggleLargeTab(this)">
+                <h3>Air Hockey Defense Robot</h3>
+                <span class="tab-icon">+</span>
+            </div>
+            <div class="large-tab-content">
+                <div class="large-tab-description">
+                    <p>The Air Hockey Defense Robot was built to sit at one end of an air hockey table and deflect incoming shots. It did this by detecting the puck's initial and final distance from the side of the board as it crossed the midpoint of the table. It measured both the distance and time between the two measurements, which gave it the puck's direction and speed. Then it moved a mallet to intercept it as it passed the robot's side of the table.</p>
+                    <p>I was my team's mechanical lead, so I had to create a system that would move the mallet to the puck's calculated position. This was a significant task, since I was limited to exclusively VEX IQ parts. After several revisions, I ultimately designed a two-axis gantry system, with a belt attached to the mallet in order to move it along the widthwise direction and a linear actuator for the lengthwise direction to strike the puck quickly. The widthwise motor was also geared down at a 9:1 ratio so it would be fast enough to catch the puck, being able to cross the table in a single rotation of the motor.</p>
+                    <p>However, since my wires weren't long enough to cross the entire table, I could only put motors on one side of the table. This made the linear actuator difficult, since it required an equal push from both sides to evenly shoot the puck forward. So, I had to run rotating beams along the full length of the gantry, and recreate the same actuator mechanism on the opposite side. Without this, the mallet would've been angled instead of pushed, and the puck would've been shot back either unpredictably or not at all.</p>
+                    <p>The Air Hockey Defense Robot achieved a 76% deflection rate, despite the very strict material constraints.</p>
+                     <img src="https://i.imgur.com/45PbhOt.png" alt="Air Hockey Defense Robot" style="width: 100%; max-width: 600px; margin: 1.5rem auto; display: block;">
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- STANDALONE TAB: Guitar Pedal -->
+        <div class="large-tab-container">
+            <div class="large-tab-header" onclick="toggleLargeTab(this)">
+                <h3>Distortion Guitar Pedal</h3>
+                <span class="tab-icon">+</span>
+            </div>
+            <div class="large-tab-content">
+                <div class="large-tab-description">
+                    <p>A distortion pedal based on the old Fuzz Face guitar pedal, which uses transistor clipping to produce 'fuzz' in the signal transmitted to the amplifier.</p>
+                    
+                    <p>First, I found a schematic for one online and modified it for the components I had available. Then, I calculated the resistances that would be required to complete the circuit and properly bias the transistors for stable clipping. Then I soldered my available resistors in series until they reached the correct calculated resistance I needed to complete the circuit.</p>
+                    
+                    <p>Once I had all the correct components, I soldered them together point-to-point, following the schematic. All the components worked properly, except for the LED indicating the pedal was on, which had to be replaced after I calculated the wrong resistance and burnt it out. Afterwards, the finished pedal achieved stable distortion and clipping, without any components overheating.</p>
+                    
+                    <div class="tab-images">
+                        <img src="https://i.imgur.com/FTIdqG0.png" alt="Guitar Pedal Circuit">
+                        <img src="https://i.imgur.com/5MgEDS8.png" alt="Guitar Pedal Assembly">
+                    </div>
+                </div>
+            </div>
+         </div>
+
+        <!-- LARGE TAB: Side Projects -->
+        <div class="large-tab-container">
+            <div class="large-tab-header" onclick="toggleLargeTab(this)">
+                <h3>Side Projects</h3>
+                <span class="tab-icon">+</span>
+            </div>
+            <div class="large-tab-content">
+                <div class="large-tab-description">
+                    <p>While mechatronics is my passion and field of interest, I've also had a few woodworking side projects, made in a machine shop or with hand tools.</p>
+                </div>
+                
+                <div class="project-tab" onclick="toggleTab(this)">
+                    <div class="tab-header-row">
+                        <h4>Ebony Ring</h4>
+                        <span class="tab-icon">+</span>
+                    </div>
+                    <div class="tab-content-wrapper">
+                        <div class="tab-content">
+                            <p>This was made with an ebony ring blank and a ring core. First, I drilled out the right ring size with a drill press. Then I spun the blank on a lathe, removing material until it was the correct shape and thickness. Then I adhered it to the ring core and polished it.</p>
+                            
+                            <img src="https://i.imgur.com/oIYhAJ7.png" alt="Ebony Ring" style="width: 100%; max-width: 500px; margin: 1.5rem auto; display: block;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-tab" onclick="toggleTab(this)">
+                    <div class="tab-header-row">
+                        <h4>Pens</h4>
+                        <span class="tab-icon">+</span>
+                    </div>
+                    <div class="tab-content-wrapper">
+                        <div class="tab-content">
+                            <p>These were two ballpoint pens made from exotic wood blanks. One was made from pine and agate, and the other was ancient bog oak. The centers of the blanks were drilled out with a drill press, they were spun on a lathe until they were the right shape, and then they were pressed and adhered to the metal mechanics of the pens.</p>
+                            
+                            <img src="https://i.imgur.com/66TBiCB.jpeg" alt="Wooden Pens" style="width: 100%; max-width: 500px; margin: 1.5rem auto; display: block;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-tab" onclick="toggleTab(this)">
+                    <div class="tab-header-row">
+                        <h4>Portable Workbench</h4>
+                        <span class="tab-icon">+</span>
+                    </div>
+                    <div class="tab-content-wrapper">
+                        <div class="tab-content">
+                            <p>Since I'm now living in Waterloo, I needed a workbench that could travel with me, so I could continue working on projects away from home. So, I made this portable workbench out of a 2x12 from home depot. It has two layers glued together, with dog holes and a twin screw vise. I didn't have any power tools when I made this however, so all of it had to be done by hand; the sawing and drilling included.</p>
+                            
+                            <img src="https://i.imgur.com/oKbY99U.png" alt="Portable Workbench" style="width: 100%; max-width: 500px; margin: 1.5rem auto; display: block;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
 
     <div id="blogOverlay" class="blog-overlay">
         <div class="blog-content">
@@ -812,32 +934,6 @@
                 content: `<p>As a guitarist, building my own fuzz pedal was a perfect blend of my interests in music and electronics. The Fuzz Face is a classic design that uses discrete NPN BJTs to create its characteristic warm distortion.</p>
                 <p>The key was carefully adjusting resistor values to set proper transistor bias points. Getting stable amplification and the right clipping behavior required understanding how each component affected the signal chain.</p>
                 <p>I took an iterative approach—building, testing, listening, and modifying. Each component-level change taught me more about analog circuit behavior and how theoretical knowledge translates to the sound coming out of an amplifier. The final result has a rich, organic distortion that I use regularly.</p>`
-            },
-            axe: {
-                title: 'Axe Restoration',
-                content: `<p>There's something deeply satisfying about taking a rusted, forgotten axe and bringing it back to life. Axe restoration combines history, craftsmanship, and practical metalworking skills.</p>
-                <p>Each restoration project starts with careful cleaning—removing rust and decades of accumulated grime to reveal the original steel. I use a combination of mechanical and chemical methods depending on the condition of the piece.</p>
-                <p>Reshaping and sharpening the edge requires patience and attention to geometry. The goal is to preserve the original maker's intent while ensuring the tool is functional. Finally, fitting a new handle involves understanding wood grain, weight balance, and traditional joinery techniques. Every restored axe tells a story.</p>`
-            },
-            guitar: {
-                title: 'Guitar',
-                content: `<p>Guitar has been my creative outlet for years. There's something magical about the direct connection between your fingers and the sound—no intermediary, just vibrating strings and resonating wood.</p>
-                <p>I'm drawn to the technical side as much as the musical. Understanding how pickups translate string vibration into electrical signals, how tube amplifiers shape tone, and how different pedals affect the signal chain adds depth to my playing.</p>
-                <p>My collection ranges from vintage instruments to modern designs, and I enjoy both playing and maintaining them. Building the Fuzz Face pedal was a natural extension of this interest—understanding the electronics behind the sounds I create.</p>`
-            },
-            physical: {
-                title: 'Physical Activity',
-                content: `<p>Physical activity is essential to my routine. Whether it's rock climbing, swimming, or hiking, I need the mental clarity and physical challenge that comes from pushing my body.</p>
-                <p>Rock climbing teaches problem-solving under pressure—each route is a puzzle that requires planning, technique, and sometimes creative solutions. It's engineering in physical form.</p>
-                <p>Swimming offers a different kind of challenge: rhythm, breath control, and endurance. Having worked as a lifeguard, I have deep respect for water safety and the technical aspects of efficient swimming.</p>
-                <p>These activities aren't just exercise—they're opportunities to clear my mind, build resilience, and approach problems from different angles.</p>`
-            },
-            warhammer: {
-                title: 'Warhammer',
-                content: `<p>Warhammer 40,000 combines tactical gameplay with detailed miniature painting and intricate lore. It's a hobby that engages multiple skill sets: strategic thinking, artistic expression, and craftsmanship.</p>
-                <p>Building and painting miniatures requires patience and attention to detail. Each model involves careful assembly, preparation, and painting techniques from base coating to edge highlighting and weathering effects.</p>
-                <p>The gameplay itself is deeply strategic—list building, positioning, understanding probability, and adapting to your opponent's moves. It shares similarities with engineering problem-solving: working within constraints to achieve objectives.</p>
-                <p>The universe's rich lore and community aspect make it more than just a game—it's a creative outlet where I can build something tangible while engaging in competitive strategy.</p>`
             }
         };
 
@@ -940,6 +1036,105 @@
         }, observerOptions);
 
         document.querySelectorAll('.loading').forEach(el => observer.observe(el));
+
+    function toggleLargeTab(element) {
+    const content = element.nextElementSibling;
+    const icon = element.querySelector('.tab-icon');
+    const isActive = element.classList.contains('active');
+    
+    if (isActive) {
+        // Close this tab
+        element.classList.remove('active');
+        content.classList.remove('active');
+        icon.textContent = '+';
+    } else {
+        // Close all large tabs first
+        const allLargeTabs = document.querySelectorAll('.large-tab-header');
+        const allLargeContents = document.querySelectorAll('.large-tab-content');
+        const allIcons = document.querySelectorAll('.large-tab-header .tab-icon');
+        
+        allLargeTabs.forEach(tab => tab.classList.remove('active'));
+        allLargeContents.forEach(content => content.classList.remove('active'));
+        allIcons.forEach(icon => icon.textContent = '+');
+        
+        // Open clicked tab
+        element.classList.add('active');
+        content.classList.add('active');
+        icon.textContent = '−';
+    }
+}
+
+function toggleTab(element) {
+    const contentWrapper = element.querySelector('.tab-content-wrapper');
+    const content = element.querySelector('.tab-content');
+    const icon = element.querySelector('.tab-icon');
+    const isActive = element.classList.contains('active');
+    
+    if (isActive) {
+        // Close this tab
+        element.classList.remove('active');
+        content.classList.remove('active');
+        icon.textContent = '+';
+    } else {
+        // Close all tabs in the same container
+        const container = element.closest('.large-tab-content') || element.parentElement;
+        const allTabs = container.querySelectorAll('.project-tab');
+        
+        allTabs.forEach(tab => {
+            tab.classList.remove('active');
+            const tabContent = tab.querySelector('.tab-content');
+            const tabIcon = tab.querySelector('.tab-icon');
+            if (tabContent) tabContent.classList.remove('active');
+            if (tabIcon) tabIcon.textContent = '+';
+        });
+        
+        // Open clicked tab
+        element.classList.add('active');
+        content.classList.add('active');
+        icon.textContent = '−';
+    }
+}
     </script>
+
+    <!-- Image Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <script>
+// Image Lightbox Functions
+function openLightbox(imgSrc) {
+    event.stopPropagation(); // Prevent tab from closing
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    lightboxImg.src = imgSrc;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Add click handlers to all images in tabs
+document.addEventListener('DOMContentLoaded', function() {
+    const tabImages = document.querySelectorAll('.tab-content img, .tab-images img, .large-tab-description img');
+    tabImages.forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent tab from closing
+            openLightbox(this.src);
+        });
+    });
+});
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+</script>
 </body>
 </html> 
